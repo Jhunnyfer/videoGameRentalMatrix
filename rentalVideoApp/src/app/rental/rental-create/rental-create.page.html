@@ -1,9 +1,39 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>rentalCreate</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+    <form  #form="ngForm" (ngSubmit)="register(form)">
+        <ion-grid>
+          <ion-row color="primary" justify-content-center>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <div text-center>
+                <h3>Agregar Renta</h3>
+              </div>
+              <div padding>
+                  <ion-item>
+                      <ion-label>Film</ion-label>
+                      <ion-select placeholder="Select One" [(ngModel)]="data.filmId" name="filmId">
+                          
+                      </ion-select>
+                    </ion-item>
 
+                    <ion-item>
+                        <ion-label>Tipo Identificacion</ion-label>
+                        <ion-select placeholder="Select One" [(ngModel)]="data.typeIdentification" name="typeIdentification">
+                            
+                        </ion-select>
+                      </ion-item>
+                
+                      <ion-item>
+                          <ion-input  name="identification" type="text" placeholder="Identificacion" [(ngModel)]="data.identification" required></ion-input>
+                      </ion-item>
+
+                <ion-item>
+                  <ion-input  name="fullName" type="text" placeholder="Full Name" [(ngModel)]="data.fullName" required></ion-input>
+                </ion-item>
+              </div>
+              <div padding>
+                <ion-button  size="large" type="submit" (click)="submitForm()" [disabled]="form.invalid" expand="block">Agregar</ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
 </ion-content>

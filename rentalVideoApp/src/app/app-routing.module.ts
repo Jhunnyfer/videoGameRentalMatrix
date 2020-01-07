@@ -21,11 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'film-create',
-    loadChildren: () => import('./film/film-create/film-create.module').then( m => m.FilmCreatePageModule)
-  },
-  {
-    path: 'film-create',
-    loadChildren: () => import('./film/film-create/film-create.module').then( m => m.FilmCreatePageModule)
+loadChildren: () => import('./film/film-create/film-create.module').then( m => m.FilmCreatePageModule)    
   },
   {
     path: 'film-edit',
@@ -58,6 +54,22 @@ const routes: Routes = [
   {
     path: 'rental-create',
     loadChildren: () => import('./rental/rental-create/rental-create.module').then( m => m.RentalCreatePageModule)
+  },
+  {
+    path: 'film-tabs',
+    loadChildren: () => import('./film/film-tabs/film-tabs.module').then( m => m.FilmTabsPageModule)
+  },
+  {
+    path: 'genre-tabs',
+    loadChildren: () => import('./genre/genre-tabs/genre-tabs.module').then( m => m.GenreTabsPageModule)
+  },
+  {
+    path: 'rental-tabs',
+    loadChildren: () => import('./rental/rental-tabs/rental-tabs.module').then( m => m.RentalTabsPageModule)
+  },
+  {
+    path: 'rental-detail',
+    loadChildren: () => import('./rental/rental-detail/rental-detail.module').then( m => m.RentalDetailPageModule)
   }
 ];
 

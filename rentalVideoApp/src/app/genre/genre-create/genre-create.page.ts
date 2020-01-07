@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Genres } from 'src/app/models/genres';
+import { GenreService } from 'src/app/services/genre.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-genre-create',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GenreCreatePage implements OnInit {
 
-  constructor() { }
+  data: Genres;
+
+  constructor(
+    public genreService: GenreService,
+    public router: Router
+  ) {
+    this.data = new Genres();
+   }
 
   ngOnInit() {
   }
 
+  submitForm() {
+    this.genreService.createItem(this.data).subscribe((response) => {
+      this.router.navigate(['genre-tabs']);
+    });
+  }
 }

@@ -9,4 +9,11 @@
 
 <ion-content>
 
+    <ion-list>
+        <ion-item *ngFor="let credit of creditsData">
+          <h2>{{ credit.fullName | uppercase }}</h2>
+          <p>{{ credit.rol.name }}</p>
+        </ion-item>
+    </ion-list>
+
 </ion-content>

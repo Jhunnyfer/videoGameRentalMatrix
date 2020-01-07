@@ -1,9 +1,54 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>filmCreate</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+    <form  #form="ngForm">
+      <ion-grid>
+        <ion-row justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <h3>Agregar Film</h3>
+            </div>
+            <div padding>
+              <ion-item>
+                <ion-input  name="code" type="text" placeholder="Code" [(ngModel)]="data.code" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-label>Genero</ion-label>
+                  <ion-select placeholder="Select One" [(ngModel)]="data.genreId" name="genreId">
+                      <ion-select-option *ngFor="let genre of genresData" [value]="genre.id">{{ genre.name }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              <ion-item>
+                <ion-input name="tittle" type="text" placeholder="Titulo" [(ngModel)]="data.tittle" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-textarea name="description"  placeholder="Descripcion" [(ngModel)]="data.description" required></ion-textarea>
+              </ion-item>
+              <ion-item>
+                  <ion-input name="price" type="number" placeholder="Precio" [(ngModel)]="data.price" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input name="year" type="number" placeholder="Año" [(ngModel)]="data.year" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input name="minAge" type="number" placeholder="Edad Minima" [(ngModel)]="data.minAge" required></ion-input>
+              </ion-item>
+              <ion-item>
+                  <ion-input name="runningTime" type="number" placeholder="Duracion" [(ngModel)]="data.runningTime" required></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label>Estado</ion-label>
+                <ion-select placeholder="Select One" >
+                  <ion-select-option value="1">Disponible</ion-select-option>
+                  <ion-select-option value="2">No Disponible</ion-select-option>
+                </ion-select>
+              </ion-item>
 
-</ion-content>
+              
+            </div>
+            <div padding>
+              <ion-button color="tertiary"  size="large" type="submit" (click)="submitForm()" [disabled]="form.invalid" expand="block">Agregar</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
+  </ion-content>

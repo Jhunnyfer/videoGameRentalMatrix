@@ -1,29 +1,14 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>    
-    <ion-title>Renta</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
-
-  <ion-tabs>
-    <ion-tab-bar slot="bottom">
-
-      <ion-tab-button tab="schedule">
-        <ion-icon name="add"></ion-icon>
-        <ion-label>Renta</ion-label>
-      </ion-tab-button>
-  
-      <ion-tab-button tab="speakers">
-        <ion-icon name="list"></ion-icon>
-        <ion-label>List</ion-label>
-      </ion-tab-button>
-  
-    </ion-tab-bar>
-  </ion-tabs>
-
+    <ion-list>
+        <ion-item button *ngFor="let rental of rentalsData" [routerLink]="['/', 'rental-detail', rental.id]" >
+          <h2>{{ rental.fullName | uppercase }}</h2>
+          <p>{{ rental.identification }}</p>
+          <div class="item-icon-right">
+                <i class="icon ion-ios-arrow-right"></i>
+            </div><div class="item-icon-right">
+            <i class="icon ion-ios-arrow-right"></i>
+        </div>
+        </ion-item>
+       
+    </ion-list>  
 </ion-content>

@@ -1,25 +1,8 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start">
-          <ion-menu-button></ion-menu-button>
-        </ion-buttons>
-    <ion-title>Generos</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-
-    <ion-tabs>
-        <ion-tab-bar slot="bottom">
-          <ion-tab-button tab="schedule">
-            <ion-icon name="list"></ion-icon>
-            <ion-label>Generos</ion-label>
-          </ion-tab-button>
-          <ion-tab-button tab="speakers">
-            <ion-icon name="add"></ion-icon>
-            <ion-label>Agregar</ion-label>
-          </ion-tab-button>
-        </ion-tab-bar>
-      </ion-tabs>
-      
+    <ion-list>
+        <ion-item *ngFor="let genre of genresData">
+          <h2>{{ genre.name | uppercase }}</h2>
+          <p>{{ genre.id }}</p>
+        </ion-item>
+    </ion-list>      
 </ion-content>

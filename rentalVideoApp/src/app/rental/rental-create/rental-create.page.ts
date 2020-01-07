@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Rentals } from 'src/app/models/rentals';
+import { RentalService } from 'src/app/services/rental.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-rental-create',
@@ -7,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RentalCreatePage implements OnInit {
 
-  constructor() { }
+  data: Rentals;
+
+  constructor(
+    public rentalService: RentalService,
+    public router: Router
+  ) {
+    this.data = new Rentals();
+   }
 
   ngOnInit() {
+  }
+
+  submitForm() {
+    this.rentalService.createItem(this.data).subscribe((response) => {
+      this.router.navigate(['genre-tabs']);
+    });
   }
 
 }

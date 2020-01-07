@@ -18,28 +18,23 @@ export class AppComponent {
     },
     {
       title: 'Renta',
-      url: '/rental',
+      url: '/rental-tabs',
       icon: 'md-pricetag'
     },
     {
       title: 'Films',
-      url: '/film',
+      url: '/film-tabs',
       icon: 'md-videocam'
     },
     {
       title: 'Generos',
-      url: '/genre',
+      url: '/genre-tabs',
       icon: 'md-list'
     },
     {
       title: 'Creditos',
       url: '/credit',
       icon: 'md-people'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
     }
   ];
 
