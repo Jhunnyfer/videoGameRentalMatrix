@@ -34,7 +34,7 @@ public class Rental implements Serializable {
 	@Column(name = "return_date")
 	private Date returnlDate;
 	@Column(name = "code_user")
-	private Date codeUser;
+	private Integer codeUser;
 
 	@JoinColumn(name = "film_id", nullable = false)
 	@ManyToOne
@@ -104,11 +104,11 @@ public class Rental implements Serializable {
 		this.returnlDate = returnlDate;
 	}
 
-	public Date getCodeUser() {
+	public Integer getCodeUser() {
 		return codeUser;
 	}
 
-	public void setCodeUser(Date codeUser) {
+	public void setCodeUser(Integer codeUser) {
 		this.codeUser = codeUser;
 	}
 

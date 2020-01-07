@@ -33,11 +33,22 @@ public class FilmBusiness {
 	}
 
 	public Film saveFilm(FilmDTO filmDto) {
-		Genre genre = genreBusiness.getGenreById(filmDto.getGenreId());
+		
 
 		Film film = modelMapper.map(filmDto, Film.class);
+		//film.setId(film.getId());
+		
+		film.setDescription(film.getDescription());
+		film.setTittle(film.getTittle());
+		film.setStatus(film.getStatus());
+		film.setPrice(film.getPrice());
+		film.setMinAge(film.getMinAge());
+		film.setYear(film.getYear());
+		
+		Genre genre = genreBusiness.getGenreById(filmDto.getGenreId());
 		film.setGenre(genre);
-
+		
+	
 		return repository.save(film);
 	}
 
