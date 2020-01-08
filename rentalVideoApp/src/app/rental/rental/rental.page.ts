@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RentalService } from 'src/app/services/rental.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-rental',

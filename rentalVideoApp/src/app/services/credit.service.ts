@@ -9,7 +9,8 @@ import { Credits } from '../models/credits';
 })
 export class CreditService {
   
-  base_path = 'http://localhost:8081/rental/api/credits/';
+  basePathCr = 'http://localhost:8081/rental/api/credits/';
+  basePathRo = 'http://localhost:8081/rental/api/rols/';
 
   constructor(private http: HttpClient) { }
 
@@ -38,10 +39,22 @@ export class CreditService {
   // Get credits data
   getCredits(): Observable<Credits> {
     return this.http
-      .get<Credits>(this.base_path)
-      .pipe(
-        retry(2),
-        catchError(this.handleError)
-      );
+    .get<Credits>(this.basePathCr)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
   }
+
+
+  // Get roles data
+  getRoles(): Observable<Credits> {
+    return this.http
+    .get<Credits>(this.basePathRo)
+    .pipe(
+      retry(2),
+      catchError(this.handleError)
+    );
+  }
+
 }

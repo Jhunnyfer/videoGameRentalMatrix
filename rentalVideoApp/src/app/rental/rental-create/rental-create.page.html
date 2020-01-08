@@ -9,15 +9,17 @@
               <div padding>
                   <ion-item>
                       <ion-label>Film</ion-label>
-                      <ion-select placeholder="Select One" [(ngModel)]="data.filmId" name="filmId">
-                          
-                      </ion-select>
+                          <ion-select placeholder="Select One" [(ngModel)]="data.filmId" name="filmId">
+                              <ion-select-option *ngFor="let film of filmsData" [value]="film.id">{{ film.tittle }}</ion-select-option>
+                          </ion-select>
                     </ion-item>
 
                     <ion-item>
                         <ion-label>Tipo Identificacion</ion-label>
                         <ion-select placeholder="Select One" [(ngModel)]="data.typeIdentification" name="typeIdentification">
-                            
+                            <ion-select-option value="1">Cedula</ion-select-option>
+                            <ion-select-option value="2">Tarjeta de identidad</ion-select-option>
+                            <ion-select-option value="3">Visa</ion-select-option>
                         </ion-select>
                       </ion-item>
                 
@@ -26,8 +28,21 @@
                       </ion-item>
 
                 <ion-item>
-                  <ion-input  name="fullName" type="text" placeholder="Full Name" [(ngModel)]="data.fullName" required></ion-input>
+                  <ion-input  name="fullName" type="text" placeholder="Nombre Completo" [(ngModel)]="data.fullName" required></ion-input>
                 </ion-item>
+
+                <ion-item>
+                  <ion-input  name="address" type="text" placeholder="Direccion" [(ngModel)]="data.address" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-input  name="telefone" type="number" placeholder="Telefono" [(ngModel)]="data.telefone" required></ion-input>
+                </ion-item>
+
+                <ion-item>
+                    <ion-input  name="codeUser" type="number" placeholder="Codigo de usuario" [(ngModel)]="data.codeUser" required></ion-input>
+                </ion-item>
+
               </div>
               <div padding>
                 <ion-button  size="large" type="submit" (click)="submitForm()" [disabled]="form.invalid" expand="block">Agregar</ion-button>

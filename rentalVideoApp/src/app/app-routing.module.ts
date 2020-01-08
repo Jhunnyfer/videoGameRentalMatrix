@@ -12,10 +12,6 @@ const routes: Routes = [
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
-  },
-  {
     path: 'film',
     loadChildren: () => import('./film/film/film.module').then( m => m.FilmPageModule)
   },
@@ -68,8 +64,12 @@ loadChildren: () => import('./film/film-create/film-create.module').then( m => m
     loadChildren: () => import('./rental/rental-tabs/rental-tabs.module').then( m => m.RentalTabsPageModule)
   },
   {
-    path: 'rental-detail',
+    path: 'rental-detail/:id',
     loadChildren: () => import('./rental/rental-detail/rental-detail.module').then( m => m.RentalDetailPageModule)
+  },
+  {
+    path: 'film-detail/:id',
+    loadChildren: () => import('./film/film-detail/film-detail.module').then( m => m.FilmDetailPageModule)
   }
 ];
 

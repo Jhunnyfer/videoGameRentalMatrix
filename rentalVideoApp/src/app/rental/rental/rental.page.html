@@ -1,13 +1,16 @@
 <ion-content>
     <ion-list>
-        <ion-item button *ngFor="let rental of rentalsData" [routerLink]="['/', 'rental-detail', rental.id]" >
-          <h2>{{ rental.fullName | uppercase }}</h2>
-          <p>{{ rental.identification }}</p>
+        <ion-item button *ngFor="let rental of rentalsData" routerLink="/rental-detail/{{rental.id}}" >
+
+            <div class="row">
+                    <h4 class="col col-100 title">{{ rental.fullName | uppercase }}</h4>
+                    <p class="col description">{{ rental.identification }}</p>
+                    <p class="col description">{{ rental.rentalDate | date }}</p>
+                    
+                  </div> 
           <div class="item-icon-right">
-                <i class="icon ion-ios-arrow-right"></i>
-            </div><div class="item-icon-right">
-            <i class="icon ion-ios-arrow-right"></i>
-        </div>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </div>
         </ion-item>
        
     </ion-list>  

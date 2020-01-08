@@ -9,4 +9,5 @@ export class Rentals {
     returnlDate: Date;
     codeUser: number;
     filmId: number;
+    film: any;
 }

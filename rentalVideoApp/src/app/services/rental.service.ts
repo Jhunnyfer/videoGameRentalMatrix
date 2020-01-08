@@ -54,7 +54,7 @@ export class RentalService {
 
       getItem(id): Observable<Rentals> {
         return this.http
-          .post<Rentals>(this.base_path + '/' + id, JSON.stringify(id), this.httpOptions)
+          .get<Rentals>(this.base_path + id)
           .pipe(
             retry(2),
             catchError(this.handleError)

@@ -18,6 +18,7 @@ import com.matrix.rental.business.CreditBusiness;
 import com.matrix.rental.business.RentalBusiness;
 import com.matrix.rental.model.Credit;
 import com.matrix.rental.model.Rental;
+import com.matrix.rental.model.dto.RentalDTO;
 
 @RestController
 @RequestMapping("/rentals")
@@ -37,8 +38,8 @@ public class RentalController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Rental> saveRental(@Valid @RequestBody Rental rental) {
-		return ResponseEntity.ok(business.saveRental(rental));
+	public ResponseEntity<Rental> saveRental(@Valid @RequestBody RentalDTO rentalDTO) {
+		return ResponseEntity.ok(business.saveRental(rentalDTO));
 	}
 
 	@PutMapping("/{id}")

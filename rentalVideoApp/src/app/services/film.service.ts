@@ -48,6 +48,15 @@ export class FilmService {
       );
   }
 
+  getItem(id): Observable<Films> {
+    return this.http
+      .get<Films>(this.base_path + id)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
   getCreditByFilm(): Observable<Credits> {
     return this.http.get<Credits>(this.base_path)
     .pipe(
