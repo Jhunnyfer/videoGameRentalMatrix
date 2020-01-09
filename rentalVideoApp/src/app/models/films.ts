@@ -8,4 +8,5 @@ export class Films {
     runningTime: number;
     status: boolean;
     genreId: number;
+    genre: any;
 }
