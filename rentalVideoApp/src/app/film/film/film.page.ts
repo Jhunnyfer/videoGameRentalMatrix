@@ -22,7 +22,6 @@ export class FilmPage implements OnInit {
 
   getAllFilms() {
     this.filmService.getFilms().subscribe(response => {
-      console.log(response);
       this.filmsData = response;
     });
   }

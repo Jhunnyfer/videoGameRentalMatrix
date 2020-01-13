@@ -3,6 +3,7 @@ import { Films } from 'src/app/models/films';
 import { FilmService } from 'src/app/services/film.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Genres } from 'src/app/models/genres';
+import { Credits } from 'src/app/models/credits';
 
 @Component({
   selector: 'app-film-detail',
@@ -14,6 +15,9 @@ export class FilmDetailPage implements OnInit {
   id: string;
   data: Films;
   dataGenre: Genres;
+  dataCredits: any;
+
+
   constructor(
     public activatedRoute: ActivatedRoute,
     public filmService: FilmService,
@@ -21,12 +25,14 @@ export class FilmDetailPage implements OnInit {
   ) {
     this .data = new Films();
     this.dataGenre = new Genres();
+    this.dataCredits = [];
    }
 
   ngOnInit() {
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.filmService.getItem(this.id).subscribe(response => {
       this.data = response;
+      this.dataCredits = response.credits;
       this.dataGenre = response.genre;
     });
   }

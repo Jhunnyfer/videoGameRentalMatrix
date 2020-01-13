@@ -1,7 +1,11 @@
 package com.matrix.rental.model;
 
 import java.io.Serializable;
+import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
@@ -31,6 +36,18 @@ public class Film implements Serializable{
 	@Column(name = "running_time")
 	private Integer runningTime;
 	private Integer status;
+	
+	@OneToMany(cascade=CascadeType.ALL, targetEntity=Credit.class)
+	@JoinColumn(name="film_id")
+	private Set<Credit> credits = new TreeSet<>();
+
+	public Set<Credit> getCredits() {
+		return credits;
+	}
+
+	public void setCredits(Set<Credit> credits) {
+		this.credits = credits;
+	}
 
 	@JoinColumn(name = "genre_id", nullable = false)
 	@ManyToOne
@@ -115,5 +132,7 @@ public class Film implements Serializable{
 	public void setGenre(Genre genre) {
 		this.genre = genre;
 	}
+	
+
 
 }

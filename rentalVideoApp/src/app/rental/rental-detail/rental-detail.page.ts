@@ -3,6 +3,7 @@ import { Rentals } from 'src/app/models/rentals';
 import { RentalService } from 'src/app/services/rental.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Films } from 'src/app/models/films';
+import { Genres } from 'src/app/models/genres';
 
 @Component({
   selector: 'app-rental-detail',
@@ -15,6 +16,7 @@ export class RentalDetailPage implements OnInit {
   id: string;
   data: Rentals;
   dataFilm: Films;
+  dataGenre: Genres;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -23,6 +25,7 @@ export class RentalDetailPage implements OnInit {
   ) {
     this.data = new Rentals();
     this.dataFilm = new Films();
+    this.dataGenre = new Genres();
   }
 
   ngOnInit() {
@@ -31,6 +34,7 @@ export class RentalDetailPage implements OnInit {
     this.rentalService.getItem(this.id).subscribe(response => {
       this.data = response;
       this.dataFilm = response.film;
+      this.dataGenre = response.film.genre;
     });
   }
 

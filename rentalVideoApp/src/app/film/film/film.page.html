@@ -1,8 +1,10 @@
 <ion-content>
-  <ion-list>
-    <ion-item button *ngFor="let film of filmsData" routerLink="/film-detail/{{film.id}}">
-      <h2>{{ film.tittle | uppercase }}</h2>
-      <p><ion-badge color="dark">{{ film.genre.name }}</ion-badge></p>
-    </ion-item>
-  </ion-list>   
+    <ion-list>
+        <ion-item button *ngFor="let film of filmsData" routerLink="/film-detail/{{film.id}}">
+            <h2>{{ film.tittle | uppercase }}</h2>
+            <p>
+                <ion-badge color="dark">{{ film.genre.name }}</ion-badge>
+            </p>
+        </ion-item>
+    </ion-list>
 </ion-content>

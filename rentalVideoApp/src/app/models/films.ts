@@ -9,4 +9,5 @@ export class Films {
     status: boolean;
     genreId: number;
     genre: any;
+    credits: any;
 }

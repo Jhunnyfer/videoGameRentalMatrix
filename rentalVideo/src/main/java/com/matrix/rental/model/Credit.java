@@ -23,9 +23,7 @@ public class Credit implements Serializable {
 	@Column(name = "full_name")
 	private String fullName;
 
-	@JoinColumn(name = "film_id", nullable = false)
-	@ManyToOne
-	private Film film;
+
 
 	@JoinColumn(name = "rol_id", nullable = false)
 	@ManyToOne
@@ -47,13 +45,6 @@ public class Credit implements Serializable {
 		this.fullName = fullName;
 	}
 
-	public Film getFilm() {
-		return film;
-	}
-
-	public void setFilm(Film film) {
-		this.film = film;
-	}
 
 	public Rol getRol() {
 		return rol;
