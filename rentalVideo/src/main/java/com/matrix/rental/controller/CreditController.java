@@ -17,11 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.matrix.rental.business.CreditBusiness;
 import com.matrix.rental.model.Credit;
-import com.matrix.rental.model.dto.FilmDTO;
 
 @RestController
 @RequestMapping("/credits")
 public class CreditController {
+	
 	@Autowired
 	private CreditBusiness business;
 

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detalle Video Juego</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+    <ion-item class="activated">
+      Codigo:
+      <ion-label> {{ data.code }}</ion-label>
+    </ion-item>
+    <ion-item href="#" class="activated">
+      Nombre:
+      <ion-label> {{ data.tittle }}</ion-label>
+    </ion-item>
+    <ion-item href="#">
+      Descripcion:
+      <ion-label> {{ data.description }}</ion-label>
+    </ion-item>
+    <ion-item href="#">
+      Edad Minima:
+      <ion-label> {{ data.minAge }}</ion-label>
+    </ion-item>
+
+    <ion-item href="#">
+      Precio:
+      <ion-label> {{ data.price | currency:'COP'  }}</ion-label>
+    </ion-item>
+
+    <ion-item href="#">
+      Año lanzamiento:
+      <ion-label> {{ data.year }}</ion-label>
+    </ion-item>
+
+    <ion-item href="#">
+      Genero:
+      <ion-label> {{ genreData.name }}</ion-label>
+    </ion-item>
+
+    <ion-item href="#">
+      Consola:
+      <ion-label> {{ consoleData.console }}</ion-label>
+    </ion-item>
+
+    <ion-item href="#">
+      Creador:
+      <ion-label> {{ brandData.brand }}</ion-label>
+    </ion-item>
+
+
+  </ion-card>
+</ion-content>

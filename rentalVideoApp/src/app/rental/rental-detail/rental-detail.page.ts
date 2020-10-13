@@ -2,8 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Rentals } from 'src/app/models/rentals';
 import { RentalService } from 'src/app/services/rental.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Films } from 'src/app/models/films';
+import { Games } from 'src/app/models/games';
 import { Genres } from 'src/app/models/genres';
+import { Users } from 'src/app/models/users';
 
 @Component({
   selector: 'app-rental-detail',
@@ -15,8 +16,9 @@ export class RentalDetailPage implements OnInit {
 
   id: string;
   data: Rentals;
-  dataFilm: Films;
+  dataGame: Games;
   dataGenre: Genres;
+  dataUser: Users;
 
   constructor(
     public activatedRoute: ActivatedRoute,
@@ -24,17 +26,21 @@ export class RentalDetailPage implements OnInit {
     public rentalService: RentalService
   ) {
     this.data = new Rentals();
-    this.dataFilm = new Films();
+    this.dataGame = new Games();
     this.dataGenre = new Genres();
+    this.dataUser = new Users();
   }
 
   ngOnInit() {
     // tslint:disable-next-line:quotemark
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.rentalService.getItem(this.id).subscribe(response => {
+      console.log(response);
+      
       this.data = response;
-      this.dataFilm = response.film;
-      this.dataGenre = response.film.genre;
+      this.dataGame = response.game;
+      this.dataUser = response.user;
+      this.dataGenre = response.game.genre;
     });
   }
 

@@ -1,6 +1,7 @@
 package com.matrix.rental.controller;
 
 import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,9 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.matrix.rental.business.CreditBusiness;
 import com.matrix.rental.business.RentalBusiness;
-import com.matrix.rental.model.Credit;
 import com.matrix.rental.model.Rental;
 import com.matrix.rental.model.dto.RentalDTO;
 

@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Rentals } from 'src/app/models/rentals';
 import { RentalService } from 'src/app/services/rental.service';
 import { Router } from '@angular/router';
-import { FilmService } from 'src/app/services/film.service';
+import { GameService } from 'src/app/services/game.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-rental-create',
@@ -12,32 +13,42 @@ import { FilmService } from 'src/app/services/film.service';
 export class RentalCreatePage implements OnInit {
 
   data: Rentals;
-  filmsData: any;
+  gamesData: any;
+  usersData: any;
 
   constructor(
     public rentalService: RentalService,
-    public filmService: FilmService,
+    public gameService: GameService,
+    public userService: UserService,
     public router: Router
   ) {
     this.data = new Rentals();
-    this.filmsData = [];
+    this.gamesData = [];
+    this.usersData = [];
    }
 
   ngOnInit() {
-    this.getAllFilms();
+    this.getAllGames();
+    this.getAllUsers();
   }
 
-  getAllFilms() {
-    this.filmService.getFilms().subscribe(response => {
-      console.log(response);
-      this.filmsData = response;
+  getAllGames() {
+    this.gameService.getGames().subscribe(response => {
+      this.gamesData = response;
+      
+    });
+  }
+
+  getAllUsers() {
+    this.userService.getUsers().subscribe(response => {
+      this.usersData = response;
     });
   }
 
   submitForm() {
     this.data.rentalDate = new Date();
     this.rentalService.createItem(this.data).subscribe((response) => {
-      this.router.navigate(['rental-tabs/rental']);
+      this.router.navigate(['/rental-detail/' + response.id]);
     });
   }
 

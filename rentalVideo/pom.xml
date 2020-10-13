@@ -9,7 +9,7 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.matrix</groupId>
-	<artifactId>rental</artifactId>
+	<artifactId>videoGameRental</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Rental Video</name>
 	<description>Test matrix tech, Rental Video API/REST </description>

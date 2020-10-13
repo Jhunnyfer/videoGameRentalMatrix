@@ -41,7 +41,7 @@ export class RentalService {
       );
   }
 
-      // Create a new genre
+      // Create a new rental
       createItem(item): Observable<Rentals> {
         return this.http
           .post<Rentals>(this.base_path, JSON.stringify(item), this.httpOptions)

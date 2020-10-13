@@ -1,0 +1,15 @@
+<ion-content>
+<ion-searchbar
+    [(ngModel)]="searchTerm"
+    (ionChange)="getAllGenres()">
+</ion-searchbar>
+  <ion-list>
+      <ion-item button *ngFor="let game of gamesData" routerLink="/game-detail/{{game.id}}">
+          <h2>{{ game.tittle | uppercase }}</h2>&nbsp;
+          <p>
+              <ion-badge color="dark">{{ game.console.console }}</ion-badge>&nbsp;
+              <ion-badge color="primary">{{ game.brand.brand }}</ion-badge>
+          </p>
+      </ion-item>
+  </ion-list>
+</ion-content>

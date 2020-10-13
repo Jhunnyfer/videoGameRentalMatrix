@@ -3,10 +3,9 @@
         <ion-item button *ngFor="let rental of rentalsData" routerLink="/rental-detail/{{rental.id}}" >
 
             <div class="row">
-                    <h4 class="col col-100 title">{{ rental.fullName | uppercase }}</h4>
-                    <p class="col description">{{ rental.identification }}</p>
+                    <h4 class="col col-100 title">{{ rental.user.fullName | uppercase }}</h4>
+                    <p class="col description">{{ rental.user.identification }}</p>
                     <p class="col description">{{ rental.rentalDate | date }}</p>
-                    
                   </div> 
           <div class="item-icon-right">
                 <i class="icon ion-chevron-right icon-accessory"></i>

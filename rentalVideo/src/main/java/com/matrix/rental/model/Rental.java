@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "rental")
+@Table(name = "rentals")
 public class Rental implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -21,24 +21,18 @@ public class Rental implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	@Column(name = "type_identification")
-	private String typeIdentification;
-	private Integer identification;
-	@Column(name = "full_name")
-	private String fullName;
-	private String address;
-	@Column(name = "telefone")
-	private Integer telefone;
 	@Column(name = "rental_date")
 	private Date rentalDate;
 	@Column(name = "return_date")
 	private Date returnlDate;
-	@Column(name = "code_user")
-	private Integer codeUser;
 
-	@JoinColumn(name = "film_id", nullable = false)
+	@JoinColumn(name = "videogame_id", nullable = false)
 	@ManyToOne
-	private Film film;
+	private Game game;
+	
+	@JoinColumn(name = "user_id", nullable = false)
+	@ManyToOne
+	private User user;
 
 	public Integer getId() {
 		return id;
@@ -46,46 +40,6 @@ public class Rental implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
-	}
-
-	public String getTypeIdentification() {
-		return typeIdentification;
-	}
-
-	public void setTypeIdentification(String typeIdentification) {
-		this.typeIdentification = typeIdentification;
-	}
-
-	public Integer getIdentification() {
-		return identification;
-	}
-
-	public void setIdentification(Integer identification) {
-		this.identification = identification;
-	}
-
-	public String getFullName() {
-		return fullName;
-	}
-
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public Integer getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(Integer telefone) {
-		this.telefone = telefone;
 	}
 
 	public Date getRentalDate() {
@@ -104,20 +58,20 @@ public class Rental implements Serializable {
 		this.returnlDate = returnlDate;
 	}
 
-	public Integer getCodeUser() {
-		return codeUser;
+	public Game getGame() {
+		return game;
 	}
 
-	public void setCodeUser(Integer codeUser) {
-		this.codeUser = codeUser;
+	public void setGame(Game game) {
+		this.game = game;
+	}
+	
+	public User getUser() {
+		return user;
 	}
 
-	public Film getFilm() {
-		return film;
-	}
-
-	public void setFilm(Film film) {
-		this.film = film;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 }

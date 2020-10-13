@@ -2,15 +2,14 @@ package com.matrix.rental.business;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 import com.matrix.rental.exception.ResourceNotFoundException;
-import com.matrix.rental.model.Film;
-import com.matrix.rental.model.Genre;
+import com.matrix.rental.model.Game;
 import com.matrix.rental.model.Rental;
+import com.matrix.rental.model.User;
 import com.matrix.rental.model.dto.RentalDTO;
 import com.matrix.rental.repository.RentalRepository;
 
@@ -22,7 +21,10 @@ public class RentalBusiness {
 	private RentalRepository repository;
 	
 	@Autowired
-	private FilmBusiness filmBusines;
+	private GameBusiness gameBusines;
+	
+	@Autowired
+	private UserBusiness userBusiness; 
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -39,23 +41,16 @@ public class RentalBusiness {
 	public Rental saveRental(RentalDTO rentalDTO) {
 		
 		Rental rental = modelMapper.map(rentalDTO, Rental.class);
-		
-		rental.setAddress(rental.getAddress());
-		rental.setCodeUser(rental.getCodeUser());
-		rental.setFullName(rental.getFullName());
-		rental.setTelefone(rental.getTelefone());
-		rental.setTypeIdentification(rental.getTypeIdentification());
-		rental.setIdentification(rental.getIdentification());
-		
-		Film film = filmBusines.getFilmById(rentalDTO.getFilmId());
-		rental.setFilm(film);
-		
+		User user = userBusiness.getUserById(rentalDTO.getUserId());
+		Game game = gameBusines.getGameById(rentalDTO.getGameId());
+		rental.setGame(game);
+		rental.setUser(user);
 		return repository.save(rental);
 	}
 
 	public Rental updateRental(Integer id, Rental rental) {
 		Rental rentalUpdate = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Rental", "id", id));
-		rentalUpdate.setFullName(rental.getFullName());
+		rentalUpdate.setReturnlDate(rental.getReturnlDate());
 		return repository.save(rentalUpdate);
 	}
 

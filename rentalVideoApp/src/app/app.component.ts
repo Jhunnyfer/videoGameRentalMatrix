@@ -22,9 +22,19 @@ export class AppComponent {
       icon: 'md-pricetag'
     },
     {
-      title: 'Films',
-      url: '/film-tabs',
-      icon: 'md-videocam'
+      title: 'Video Juegos',
+      url: '/game-tabs',
+      icon: 'md-film'
+    },
+    {
+      title: 'Creadores',
+      url: '/brand-tabs',
+      icon: 'md-list'
+    },
+    {
+      title: 'Consolas',
+      url: '/console-tabs',
+      icon: 'md-list'
     },
     {
       title: 'Generos',
@@ -34,7 +44,17 @@ export class AppComponent {
     {
       title: 'Creditos',
       url: '/credit',
+      icon: 'md-list'
+    },
+    {
+      title: 'Usuarios',
+      url: '/user-tabs',
       icon: 'md-people'
+    },
+    {
+      title: 'Reportes',
+      url: '/reports',
+      icon: 'md-list'
     }
   ];
 
