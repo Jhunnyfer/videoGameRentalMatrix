@@ -1,2 +1,2 @@
-# videoGameRentalMatrix
+# videoGameRental
 videoGameRental MatrixTech Test
