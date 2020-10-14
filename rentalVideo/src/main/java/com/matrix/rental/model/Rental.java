@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "rentals")
@@ -25,6 +26,10 @@ public class Rental implements Serializable {
 	private Date rentalDate;
 	@Column(name = "return_date")
 	private Date returnlDate;
+	@NotNull
+	private String type;
+	@NotNull
+	private float price;
 
 	@JoinColumn(name = "videogame_id", nullable = false)
 	@ManyToOne
@@ -72,6 +77,22 @@ public class Rental implements Serializable {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public float getPrice() {
+		return price;
+	}
+
+	public void setPrice(float price) {
+		this.price = price;
 	}
 
 }

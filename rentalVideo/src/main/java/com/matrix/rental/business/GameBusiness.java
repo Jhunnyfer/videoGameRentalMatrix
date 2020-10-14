@@ -37,22 +37,19 @@ public class GameBusiness {
 	}
 
 	public Game getGameById(Integer id) {
-		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Film", "id", id));
+		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "id", id));
 	}
 
 	public Game saveGame(GameDTO gameDto) {
 		
-
-		Game game = modelMapper.map(gameDto, Game.class);
-		//film.setId(film.getId());
-		
+		Game game = modelMapper.map(gameDto, Game.class);		
 		game.setDescription(game.getDescription());
 		game.setTittle(game.getTittle());
 		game.setStatus(game.getStatus());
-		game.setPrice(game.getPrice());
+		game.setPriceRental(game.getPriceRental());
+		game.setPriceSale(game.getPriceSale());
 		game.setMinAge(game.getMinAge());
 		game.setYear(game.getYear());
-		
 		Genre genre = genreBusiness.getGenreById(gameDto.getGenreId());
 		game.setGenre(genre);
 		
@@ -66,19 +63,31 @@ public class GameBusiness {
 	}
 
 	public Game updateGame(Integer id, GameDTO gameDto) {
-		Game gameUpdate = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Film", "id", id));
+		Game gameUpdate = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "id", id));
 
-		Genre genre = genreBusiness.getGenreById(gameDto.getGenreId());
-
-		gameUpdate.setGenre(genre);
-		gameUpdate.setTittle(gameDto.getTittle());
+		//Game game = modelMapper.map(gameDto, Game.class);		
 		gameUpdate.setDescription(gameDto.getDescription());
-
+		gameUpdate.setTittle(gameDto.getTittle());
+		gameUpdate.setStatus(gameDto.getStatus());
+		gameUpdate.setPriceRental(gameDto.getPriceRental());
+		gameUpdate.setPriceSale(gameDto.getPriceSale());
+		gameUpdate.setMinAge(gameDto.getMinAge());
+		gameUpdate.setYear(gameDto.getYear());
+		
+		Genre genre = genreBusiness.getGenreById(gameDto.getGenreId());
+		gameUpdate.setGenre(genre);
+		
+		Brand brand = brandBusiness.getBrandById(gameDto.getBrandId());
+		gameUpdate.setBrand(brand);
+				
+		Console console = consoleBusiness.getConsoleById(gameDto.getBrandId());
+		gameUpdate.setConsole(console);
+		
 		return repository.save(gameUpdate);
 	}
 
 	public void deleteGame(Integer id) {
-		Game game = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Film", "id", id));
+		Game game = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Game", "id", id));
 		repository.delete(game);
 	}
 

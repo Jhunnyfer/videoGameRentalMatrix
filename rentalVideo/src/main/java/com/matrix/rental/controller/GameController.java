@@ -41,13 +41,13 @@ public class GameController {
 		return ResponseEntity.ok(business.saveGame(gameDto));
 	}
 
-	@PutMapping("/{id}")
+	@PostMapping("/update/{id}")
 	public ResponseEntity<Game> updateGame(@PathVariable(value = "id") Integer id,
 			@Valid @RequestBody GameDTO gameDto) {
 		return ResponseEntity.ok(business.updateGame(id, gameDto));
 	}
 
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/game/{id}")
 	public ResponseEntity<?> deleteGame(@PathVariable(value = "id") Integer id) {
 		business.deleteGame(id);
 		return ResponseEntity.ok().build();

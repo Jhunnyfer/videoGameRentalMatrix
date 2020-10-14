@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "users")
@@ -21,18 +22,23 @@ public class User implements Serializable {
 	@Column(name = "identification")
 	private String identification;
 	
+	
+	@NotNull
+	@Size(min = 5, max = 50)
 	@Column(name = "full_name")
 	private String fullName;
 	
 	@Column(name = "address")
 	private String address;
 	
+	@NotNull
 	@Column(name = "phone_number")
 	private String phoneNumber;
 	
 	@Column(name = "birth_date")
 	private String birthDate;
-	
+	@NotNull
+	@Email
 	@Column(name = "email")
 	private String email;
 	

@@ -10,7 +10,8 @@ public class GameDTO implements Serializable {
 	private Integer code;
 	private String tittle;
 	private String description;
-	private float price;
+	private float priceRental;
+	private float priceSale;
 	private Integer year;
 	private Integer minAge;
 	private Integer status;
@@ -69,14 +70,6 @@ public class GameDTO implements Serializable {
 		this.description = description;
 	}
 
-	public float getPrice() {
-		return price;
-	}
-
-	public void setPrice(float price) {
-		this.price = price;
-	}
-
 	public Integer getYear() {
 		return year;
 	}
@@ -107,6 +100,22 @@ public class GameDTO implements Serializable {
 
 	public void setGenreId(Integer genreId) {
 		this.genreId = genreId;
+	}
+
+	public float getPriceRental() {
+		return priceRental;
+	}
+
+	public void setPriceRental(float price_rental) {
+		this.priceRental = price_rental;
+	}
+
+	public float getPriceSale() {
+		return priceSale;
+	}
+
+	public void setPriceSale(float priceSale) {
+		this.priceSale = priceSale;
 	}
 
 }

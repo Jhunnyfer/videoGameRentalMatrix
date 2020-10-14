@@ -18,7 +18,7 @@ public class UserBusiness {
 	}
 
 	public User getUserById(Integer id) {
-		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Console", "id", id));
+		return repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 	}
 
 	public User saveUser(User user) {
@@ -26,12 +26,12 @@ public class UserBusiness {
 	}
 
 	public User updateUser(Integer id, User user) {
-		User userUpdate = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Console", "id", id));
+		User userUpdate = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 		return repository.save(userUpdate);
 	}
 
 	public void deleteUser(Integer id) {
-		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Console", "id", id));
+		User user = repository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 		repository.delete(user);
 	}
 }

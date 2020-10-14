@@ -6,7 +6,6 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -44,7 +43,7 @@ public class BrandController {
 		return ResponseEntity.ok(business.updateBrand(id, brand));
 	}
 
-	@DeleteMapping("/{id}")
+	@GetMapping("/brand/{id}")
 	public ResponseEntity<?> deleteBrand(@PathVariable(value = "id") Integer id) {
 		business.deleteBrand(id);
 		return ResponseEntity.ok().build();
