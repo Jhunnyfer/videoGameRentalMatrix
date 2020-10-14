@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GenreService } from 'src/app/services/genre.service';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-genre',
@@ -15,7 +16,8 @@ export class GenrePage implements OnInit {
   }
 
   constructor(
-    public genreService: GenreService
+    public genreService: GenreService,
+    public alertCtrl: AlertController
   ) {
     this.genresData = [];
   }
@@ -25,6 +27,29 @@ export class GenrePage implements OnInit {
       console.log(response);
       this.genresData = response;
     });
+  }
+
+
+  async removeItem(item) {
+    const alert = await this.alertCtrl.create({
+      header: 'Confirmación',
+      message: '¿Está seguro que desea eliminar el registro?',
+      buttons: [
+        {
+          text: 'SI',
+          handler: () => {
+
+          }
+        },
+        {
+          text: 'NO',
+          handler: () => {
+
+          }
+        }
+      ]
+    });
+    await alert.present();
   }
 
 }

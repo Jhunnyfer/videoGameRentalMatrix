@@ -67,8 +67,7 @@ export class GameCreatePage implements OnInit {
 
   submitForm() {
     this.gameService.createItem(this.data).subscribe((response) => {
-      console.log(response);
-      //this.router.navigate(['/rental-detail/' + response.id]);
+      this.router.navigate(['/game-detail/' + response.id]);
     });
   }
 

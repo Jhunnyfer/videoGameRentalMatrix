@@ -54,6 +54,19 @@ export class GameService {
       );
   }
 
+
+   // Create a new videogame
+   updateItem(item): Observable<Games> {
+     console.log(item.id);
+     
+    return this.http
+      .post<Games>(this.basePathCr + "update/" +item.id, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
   getItem(id): Observable<Games> {
     return this.http
       .get<Games>(this.basePathCr + id)

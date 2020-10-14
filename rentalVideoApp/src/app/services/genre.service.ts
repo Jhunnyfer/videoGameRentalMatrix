@@ -55,4 +55,15 @@ export class GenreService {
           catchError(this.handleError)
         );
     }
+
+
+    // Create a new genre
+    deleteItem(item): Observable<Genres> {
+      return this.http
+        .post<Genres>(this.base_path, JSON.stringify(item), this.httpOptions)
+        .pipe(
+          retry(2),
+          catchError(this.handleError)
+        );
+    }
 }

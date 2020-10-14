@@ -1,8 +1,20 @@
 <ion-content>
+  <ion-searchbar
+  [(ngModel)]="searchTerm"
+  (ionChange)="getAllBrands()">
+</ion-searchbar>
     <ion-list>
-        <ion-item *ngFor="let genre of genresData">
+      <ion-item-sliding *ngFor="let genre of genresData">
+
+        <ion-item >
           <h2>{{ genre.name | uppercase }}</h2>
           <p>{{ genre.id }}</p>
         </ion-item>
+        <ion-item-options>
+          <ion-button color="primary" type="button" (click)="removeItem(genre.id)" >Editar</ion-button>
+          <ion-button color="danger" type="button" (click)="removeItem(genre.id)" >Eliminar</ion-button>
+        </ion-item-options>
+      </ion-item-sliding>
+      
     </ion-list>      
 </ion-content>

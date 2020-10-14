@@ -10,12 +10,12 @@ import { EnviromementService } from '../services/enviromement.service';
 })
 export class BrandService {
 
-  base_path= '/rental/api/brands/';
+  base_path = '/rental/api/brands/';
 
   constructor(
     private http: HttpClient,
     private env: EnviromementService
-    ) { }
+  ) { }
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -30,6 +30,7 @@ export class BrandService {
     } else {
       // The backend returned an unsuccessful response code.
       // The response body may contain clues as to what went wrong,
+      console.log(error);
       console.error(
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
@@ -50,8 +51,19 @@ export class BrandService {
   }
 
 
-    // Create a new genre
-    createItem(item): Observable<Brands> {
+  // Create a new brand
+  createItem(item): Observable<Brands> {
+    return this.http
+      .post<Brands>(this.base_path, JSON.stringify(item), this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
+
+
+    // Create a new brand
+    updateItem(item): Observable<Brands> {
       return this.http
         .post<Brands>(this.base_path, JSON.stringify(item), this.httpOptions)
         .pipe(
@@ -59,4 +71,16 @@ export class BrandService {
           catchError(this.handleError)
         );
     }
+
+  // Create a new brand
+  deleteItem(id: number): Observable<{}> {
+    const url = `${this.env.server() + this.base_path + "brand/" + id}`;
+    console.log(url);
+    return this.http
+      .get(url, this.httpOptions)
+      .pipe(
+        retry(2),
+        catchError(this.handleError)
+      );
+  }
 }

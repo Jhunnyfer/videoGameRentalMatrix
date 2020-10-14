@@ -9,18 +9,28 @@
               <div padding>
                   <ion-item>
                       <ion-label>Video Juego</ion-label>
-                          <ion-select placeholder="Select One" [(ngModel)]="data.gameId" name="gameId">
-                              <ion-select-option *ngFor="let game of gamesData" [value]="game.id">{{ game.tittle }}</ion-select-option>
+                          <ion-select placeholder="Video Juego" [(ngModel)]="data.gameId" name="gameId">
+                              <ion-select-option *ngFor="let game of gamesData" [value]="game.id" >{{ game.tittle }}</ion-select-option>
                           </ion-select>
                     </ion-item>
 
                     <ion-item>
                       <ion-label>Cliente</ion-label>
-                          <ion-select placeholder="Select One" [(ngModel)]="data.userId" name="userId">
+                          <ion-select placeholder="Cliente" [(ngModel)]="data.userId" name="userId">
                               <ion-select-option *ngFor="let user of usersData" [value]="user.id">{{ user.fullName }}</ion-select-option>
                           </ion-select>
                     </ion-item>
-              
+
+                    <ion-item>
+                      <ion-label>Tipo</ion-label>
+                          <ion-select placeholder="Tipo" [(ngModel)]="data.type" name="type" (ionChange)="selectedGame()">
+                            <ion-select-option *ngFor="let type of types" [value]="type.id" >{{ type.type }}</ion-select-option>
+                          </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-input  name="price" type="number" readonly placeholder="Precio" [(ngModel)]="data.price" required></ion-input>
+                    </ion-item>
               </div>
               <div padding>
                 <ion-button  size="large" type="submit" (click)="submitForm()" [disabled]="form.invalid" expand="block">Agregar</ion-button>

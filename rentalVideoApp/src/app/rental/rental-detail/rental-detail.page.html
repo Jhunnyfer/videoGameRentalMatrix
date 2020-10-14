@@ -39,5 +39,15 @@
             <ion-label>{{ dataGenre.name }}</ion-label>
         </ion-item>
 
+        <ion-item href="#" class="activated">
+            <ion-icon name="logo-usd" slot="start"></ion-icon>
+            <ion-label>{{ data.price | currency:'COP'  }}</ion-label>
+        </ion-item>
+
+        <ion-item href="#" class="activated">
+            <ion-icon name="list" slot="start"></ion-icon>
+            <ion-label>{{ data.type }}</ion-label>
+        </ion-item>
+
     </ion-card>
 </ion-content>

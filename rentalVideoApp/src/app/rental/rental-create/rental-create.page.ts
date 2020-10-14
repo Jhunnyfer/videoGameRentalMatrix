@@ -15,6 +15,18 @@ export class RentalCreatePage implements OnInit {
   data: Rentals;
   gamesData: any;
   usersData: any;
+  gameData: any;
+
+  types = [
+    {
+      id: 1,
+      type: 'Alquiler',
+    },
+    {
+      id: 2,
+      type: 'Venta',
+    }
+  ];
 
   constructor(
     public rentalService: RentalService,
@@ -25,6 +37,7 @@ export class RentalCreatePage implements OnInit {
     this.data = new Rentals();
     this.gamesData = [];
     this.usersData = [];
+    this.gameData = [];
    }
 
   ngOnInit() {
@@ -52,4 +65,14 @@ export class RentalCreatePage implements OnInit {
     });
   }
 
+  selectedGame(){
+    this.gameService.getItem(this.data.gameId).subscribe(response => {
+      this.gameData = response;
+      if(this.data.type === 1){
+        this.data.price = Number(response.priceRental);
+      }else{
+        this.data.price = Number(response.priceSale);
+      }
+    });
+  }
 }

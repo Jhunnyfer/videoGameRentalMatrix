@@ -1,15 +1,24 @@
 <ion-content>
-<ion-searchbar
+    <ion-searchbar
     [(ngModel)]="searchTerm"
     (ionChange)="getAllGenres()">
-</ion-searchbar>
-  <ion-list>
-      <ion-item button *ngFor="let game of gamesData" routerLink="/game-detail/{{game.id}}">
-          <h2>{{ game.tittle | uppercase }}</h2>&nbsp;
-          <p>
-              <ion-badge color="dark">{{ game.console.console }}</ion-badge>&nbsp;
-              <ion-badge color="primary">{{ game.brand.brand }}</ion-badge>
-          </p>
-      </ion-item>
-  </ion-list>
-</ion-content>
+  </ion-searchbar>
+      <ion-list>
+        <ion-item-sliding *ngFor="let game of gamesData">
+  
+          <ion-item button routerLink="/game-detail/{{game.id}}">
+            <h2>{{ game.tittle | uppercase }}</h2>
+            <p>
+                <ion-badge color="dark">{{ game.console.console }}</ion-badge>&nbsp;
+                <ion-badge color="primary">{{ game.brand.brand }}</ion-badge>
+            </p>
+          </ion-item>
+          <ion-item-options>
+            <ion-button color="success" type="button" (click)="addCredits(game.id)" >Creditos</ion-button>
+            <ion-button color="primary" type="button" (click)="editItem(game.id)" >Editar</ion-button>
+            <ion-button color="danger" type="button" (click)="removeItem(game.id)" >Eliminar</ion-button>
+          </ion-item-options>
+        </ion-item-sliding>
+        
+      </ion-list>      
+  </ion-content>

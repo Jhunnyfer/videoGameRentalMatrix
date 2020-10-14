@@ -34,7 +34,6 @@ export class GameDetailPage implements OnInit {
     // tslint:disable-next-line:quotemark
     this.id = this.activatedRoute.snapshot.paramMap.get('id');
     this.gameService.getItem(this.id).subscribe(response => {
-      console.log(response);
       this.data = response;
       this.brandData = response.brand;
       this.consoleData = response.console;

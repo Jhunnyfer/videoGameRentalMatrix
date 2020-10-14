@@ -1,9 +1,75 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>game-edit</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
+  <form  #form="ngForm">
+      <ion-grid>
+        <ion-row color="primary" justify-content-center>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+            <div text-center>
+              <h3>Editar Video Juego</h3>
+            </div>
+            <div padding>
 
+              <ion-item>
+                <ion-input  name="code" type="number" placeholder="Codigo" [(ngModel)]="data.code" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input  name="tittle" type="text" placeholder="Nombre" [(ngModel)]="data.tittle" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-input  name="description" type="text" placeholder="Descripcion" [(ngModel)]="data.description" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                  <ion-input  name="priceSale" type="number" placeholder="Precio venta" [(ngModel)]="data.priceSale" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input  name="priceRental" type="number" placeholder="Precio alquiler" [(ngModel)]="data.priceRental" required></ion-input>
+            </ion-item>
+
+              <ion-item>
+                <ion-input  name="year" type="number" placeholder="Año Lanzamiento" [(ngModel)]="data.year" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-input  name="minAge" type="number" placeholder="Edad Minima" [(ngModel)]="data.minAge" required></ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Estado</ion-label>
+                    <ion-select placeholder="Estado" [(ngModel)]="data.status" name="status">
+                      <ion-select-option *ngFor="let status of statuses" [value]="status.id">{{ status.status }}</ion-select-option>
+                    </ion-select>
+              </ion-item>
+              
+              <ion-item>
+                <ion-label>Genero</ion-label>
+                    <ion-select placeholder="Genero" [(ngModel)]="data.genreId" name="genreId">
+                        <ion-select-option *ngFor="let genre of genresData" [value]="genre.id">{{ genre.name }}</ion-select-option>
+                    </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Consola</ion-label>
+                    <ion-select placeholder="Consola" [(ngModel)]="data.consoleId" name="consoleId">
+                        <ion-select-option *ngFor="let console of consolesData" [value]="console.id">{{ console.console }}</ion-select-option>
+                    </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label>Creador</ion-label>
+                    <ion-select placeholder="Creador" [(ngModel)]="data.brandId" name="brandId">
+                        <ion-select-option *ngFor="let brand of brandsData" [value]="brand.id">{{ brand.brand }}</ion-select-option>
+                    </ion-select>
+              </ion-item>
+            
+            </div>
+            <div padding>
+              <ion-button  size="large" type="submit" (click)="submitForm()" [disabled]="form.invalid" expand="block">EDITAR</ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </form>
 </ion-content>

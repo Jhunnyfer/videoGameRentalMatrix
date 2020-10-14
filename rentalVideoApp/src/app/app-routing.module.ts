@@ -62,7 +62,7 @@ const routes: Routes = [
     loadChildren: () => import('./game/game-create/game-create.module').then( m => m.GameCreatePageModule)
   },
   {
-    path: 'game-edit',
+    path: 'game-edit/:id',
     loadChildren: () => import('./game/game-edit/game-edit.module').then( m => m.GameEditPageModule)
   },
   {
@@ -94,11 +94,11 @@ const routes: Routes = [
     loadChildren: () => import('./user/user-create/user-create.module').then( m => m.UserCreatePageModule)
   },
   {
-    path: 'user-update',
+    path: 'user-update/:id',
     loadChildren: () => import('./user/user-update/user-update.module').then( m => m.UserUpdatePageModule)
   },
   {
-    path: 'user-detail',
+    path: 'user-detail/:id',
     loadChildren: () => import('./user/user-detail/user-detail.module').then( m => m.UserDetailPageModule)
   },
   {
@@ -110,7 +110,7 @@ const routes: Routes = [
     loadChildren: () => import('./console/console-create/console-create.module').then( m => m.ConsoleCreatePageModule)
   },
   {
-    path: 'console-edit',
+    path: 'console-edit/:id',
     loadChildren: () => import('./console/console-edit/console-edit.module').then( m => m.ConsoleEditPageModule)
   },
   {

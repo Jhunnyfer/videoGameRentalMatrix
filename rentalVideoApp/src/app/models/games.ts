@@ -3,7 +3,8 @@ export class Games {
     code: string;
     tittle: string;
     description: string;
-    price: string;
+    priceSale: string;
+    priceRental: string;
     year: number;
     minAge: number;
     status: boolean;
